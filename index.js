@@ -14,18 +14,21 @@ const assignSeatings = array => {
   });
 
   // Use For Loops to populate first position and last position of Each Row with Aisle
-  for (i = 0; i < seats.length; i++) {
-    for (j = 0; j < seats[i].length; j++) {
-      seats[i][j][0] = "Aisle";
-      seats[i][j][seats[i][j].length - 1] = "Aisle";
-    }
-  }
+  seats.forEach(function(item, index) {
+    seats[index].forEach(function(item, i) {
+      seats[index][i][0] = "Aisle";
+      seats[index][i][seats[index][i].length - 1] = "Aisle";
+    });
+  });
 
   //Populate First Seats - First Section & Last Seats-Last Section with Window
-  for (i = 0; i < seats[0].length; i++) seats[0][i][0] = "Window";
-  for (i = 0; i < seats[seats.length - 1].length; i++)
-    seats[seats.length - 1][i][seats[seats.length - 1][i].length - 1] =
+  seats[0].forEach(function(item, index) {
+    seats[0][index][0] = "Window";
+  });
+  seats[seats.length - 1].forEach(function(item, index) {
+    seats[seats.length - 1][index][seats[seats.length - 1][index].length - 1] =
       "Window";
+  });
   //Conclude the function
   return seats;
 };
